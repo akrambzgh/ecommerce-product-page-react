@@ -26,7 +26,7 @@ function Header() {
         <div className="serviece">
           <div className="cart-ico" onClick={handleToglle}>
             <img src="../../public/images/icon-cart.svg" alt="" />
-            {isOpen && <Cart />}
+            <Cart className={isOpen} />
           </div>
           <div className="user">
             <img src="../../public/images/image-avatar.png" alt="" />

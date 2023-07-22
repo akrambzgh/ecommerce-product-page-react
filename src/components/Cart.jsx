@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
-function Cart() {
+function Cart(props) {
   let empty = true;
   return (
-    <div className="cart">
+    <div className={props.className ? "cart show" : "cart"}>
       {empty && <h3 className="no-items-txt">Your Cart Is Empty</h3>}
       {!empty && (
         <div className="items">

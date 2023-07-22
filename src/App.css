@@ -28,7 +28,9 @@
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 2;
+  z-index: 14;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .App {
@@ -42,7 +44,6 @@
   position: relative;
   border-bottom: 1px solid var(--grayishBlue);
 }
-
 .header .container {
   display: flex;
   justify-content: space-between;
@@ -59,12 +60,12 @@
 .header nav ul {
   position: absolute;
   width: 80%;
-  left: 0;
+  left: -100%;
   top: 0;
   background: white;
   height: 100vh;
   display: block;
-  z-index: 3;
+  z-index: 15;
 }
 
 .header nav ul > img {
@@ -105,12 +106,21 @@
 .cart {
   position: absolute;
   width: calc(96% - 32px);
-  top: 110%;
+  top: 105%;
   right: 2%;
   height: calc(220.09px - 32px);
   background-color: var(--white);
   border-radius: 10px;
   padding: 16px;
+  z-index: 13;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--trnsition);
+}
+.cart.show {
+  top: 110%;
+  opacity: 1;
+  visibility: visible;
 }
 
 .cart .head {
@@ -163,7 +173,9 @@
 /* Image Slide */
 .prod-img .main-img {
   position: relative;
+  overflow: hidden;
 }
+
 .prod-img .left-arrow,
 .right-arrow {
   position: absolute;
@@ -176,6 +188,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 12;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -188,10 +201,84 @@
 .prod-img .right-arrow {
   right: 5%;
 }
+.prod-img .product-imgs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .prod-img .thumbnails {
   display: none;
 }
-.prod-img .thumbnails .thumbnail {
+
+/* Info Text */
+.info-text {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+/* Texts */
+.info-text .text span {
+  display: block;
+  color: orange;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.info-text .text p {
+  color: var(--darkGrayishBlue);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+/* Price */
+.info-text > .price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.price .discount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.price .discount span.discount-percentage {
+  padding: 5px 10px;
+  background: var(--orange);
+  border-radius: 10px;
+  color: white;
+}
+
+.price .full-price {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 18px;
+}
+.buy .count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: var(--paleOrange);
+  padding: 10px;
+  border-radius: 10px;
+}
+.buy .count span:nth-child(2) {
+  color: var(--veryDarkBlue);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+button.buy-btn {
+  width: 100%;
+  padding: 16px;
 }
 
 /* Responsive */
@@ -203,6 +290,10 @@
     display: none;
   }
   .header nav ul {
+    display: flex;
+    position: relative;
+    left: 0;
+    height: auto;
     justify-content: space-between;
     align-items: center;
     flex: 1;
@@ -226,5 +317,72 @@
     width: 350px;
     right: 3%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .prod-img {
+    width: 450px;
+  }
+  .left {
+    flex: 1;
+  }
+  .right {
+    flex: 1;
+  }
+  .prod-img .main-img {
+    width: 450px;
+  }
+  .prod-img .main-img img {
+    border-radius: 10px;
+  }
+  .prod-img .thumbnails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .prod-img .thumbnails img {
+    width: 90px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    transition: var(--trnsition);
+  }
+  .prod-img .thumbnails img:hover,
+  .prod-img .thumbnails img.chosed {
+    opacity: 0.3;
+    border-color: var(--orange);
+  }
+  .prod-img .product-imgs {
+    width: 450px;
+    height: 450px;
+  }
+  .prod-img .thumbnails .thumbnail img {
+    border-radius: 10px;
+  }
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 18px auto 0;
+  }
+  .info-text > .price {
+    margin-top: 120px;
+  }
+  .buy {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  .buy .count {
+    margin: 0;
+    width: 50%;
+  }
+  .buy-button {
+    width: 50%;
+  }
+  .info-text > .price {
+    width: 40%;
   }
 }
