@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
+
 import Buy from "./Buy";
 
-function InfoText() {
+function InfoText(props) {
   return (
     <div className="info-text">
       <div className="text">
@@ -19,7 +21,12 @@ function InfoText() {
         </div>
         <span className="full-price">$250.00</span>
       </div>
-      <Buy />
+      <Buy
+        decrement={props.decrement}
+        countNum={props.countNum}
+        increment={props.increment}
+        buy={props.handleBuy}
+      />
     </div>
   );
 }

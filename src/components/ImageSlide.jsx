@@ -1,14 +1,18 @@
-function ImageSlide() {
+/* eslint-disable react/prop-types */
+function ImageSlide(props) {
+  let styles = {
+    transform: `translateX(${props.length}%)`,
+  };
   return (
     <div className="prod-img">
       <div className="main-img">
-        <div className="left-arrow">
+        <div className="left-arrow" onClick={props.toLeft}>
           <img src="../../public/images/icon-previous.svg" alt="" />
         </div>
-        <div className="right-arrow">
+        <div className="right-arrow" onClick={props.toRight}>
           <img src="../../public/images/icon-next.svg" alt="" />
         </div>
-        <div className="product-imgs">
+        <div className="product-imgs" style={styles}>
           <img
             className="product-img"
             src="/../public/images/image-product-1.jpg"
@@ -30,12 +34,6 @@ function ImageSlide() {
             alt=""
           />
         </div>
-      </div>
-      <div className="thumbnails">
-        <img src="./../public/images/image-product-1-thumbnail.jpg" alt="" />
-        <img src="./../public/images/image-product-2-thumbnail.jpg" alt="" />
-        <img src="./../public/images/image-product-3-thumbnail.jpg" alt="" />
-        <img src="./../public/images/image-product-4-thumbnail.jpg" alt="" />
       </div>
     </div>
   );

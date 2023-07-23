@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 
 function Cart(props) {
-  let empty = true;
   return (
-    <div className={props.className ? "cart show" : "cart"}>
-      {empty && <h3 className="no-items-txt">Your Cart Is Empty</h3>}
-      {!empty && (
+    <div className={props.isShown ? "cart show" : "cart"}>
+      {!props.cart && <h3 className="no-items-txt">Your Cart Is Empty</h3>}
+      {props.cart && (
         <div className="items">
           <div className="head">
             <h3>Cart</h3>
@@ -19,11 +18,11 @@ function Cart(props) {
               <div className="info-text">
                 <span>Fall Limited Edition Sneakers</span>
                 <span className="price-calc">
-                  $125.00 x<span>3</span>
-                  <span className="full-price">$375.00</span>
+                  $125.00 x<span>{props.numberOfChoose}</span>
+                  <span className="full-price">{props.totalPrice}</span>
                 </span>
               </div>
-              <div className="delete">
+              <div className="delete" onClick={props.handleDelete}>
                 <img src="../../public/images/icon-delete.svg" alt="" />
               </div>
             </div>

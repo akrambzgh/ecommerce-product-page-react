@@ -1,17 +1,20 @@
-function Buy() {
+/* eslint-disable react/prop-types */
+function Buy(props) {
   return (
     <div className="buy">
       <div className="count">
-        <span>
+        <span onClick={props.decrement}>
           <img src="/../public/images/icon-minus.svg" alt="" />
         </span>
-        <span>0</span>
-        <span>
+        <span>{props.countNum}</span>
+        <span onClick={props.increment}>
           <img src="/../public/images/icon-plus.svg" alt="" />
         </span>
       </div>
       <div className="buy-button">
-        <button className="buy-btn">Add to cart</button>
+        <button className="buy-btn" onClick={props.buy}>
+          Add to cart
+        </button>
       </div>
     </div>
   );

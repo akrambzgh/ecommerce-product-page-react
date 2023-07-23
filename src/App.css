@@ -31,6 +31,11 @@
   z-index: 14;
   opacity: 0;
   visibility: hidden;
+  transition: var(--trnsition);
+}
+.overlayer.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .App {
@@ -66,6 +71,10 @@
   height: 100vh;
   display: block;
   z-index: 15;
+  transition: var(--trnsition);
+}
+header nav ul.show {
+  left: 0;
 }
 
 .header nav ul > img {
@@ -112,6 +121,7 @@
   background-color: var(--white);
   border-radius: 10px;
   padding: 16px;
+  padding-bottom: 35px;
   z-index: 13;
   opacity: 0;
   visibility: hidden;
@@ -195,19 +205,20 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 .prod-img .left-arrow {
   left: 5%;
 }
+
 .prod-img .right-arrow {
   right: 5%;
 }
+
 .prod-img .product-imgs {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-.prod-img .thumbnails {
-  display: none;
+  transition: var(--trnsition);
 }
 
 /* Info Text */
@@ -251,9 +262,11 @@
 
 .price .discount span.discount-percentage {
   padding: 5px 10px;
-  background: var(--orange);
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--paleOrange);
   border-radius: 10px;
-  color: white;
+  color: var(--orange);
 }
 
 .price .full-price {
@@ -274,6 +287,15 @@
   color: var(--veryDarkBlue);
   font-size: 22px;
   font-weight: 700;
+}
+
+.buy .count span:nth-child(1),
+.buy .count span:nth-child(3) {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 button.buy-btn {
@@ -329,41 +351,24 @@ button.buy-btn {
   }
   .prod-img .main-img {
     width: 450px;
+    border-radius: 10px;
   }
   .prod-img .main-img img {
     border-radius: 10px;
-  }
-  .prod-img .thumbnails {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
-  .prod-img .thumbnails img {
-    width: 90px;
-    cursor: pointer;
-    border-radius: 10px;
-    border: 3px solid transparent;
-    transition: var(--trnsition);
-  }
-  .prod-img .thumbnails img:hover,
-  .prod-img .thumbnails img.chosed {
-    opacity: 0.3;
-    border-color: var(--orange);
   }
   .prod-img .product-imgs {
     width: 450px;
     height: 450px;
   }
   .prod-img .thumbnails .thumbnail img {
-    border-radius: 10px;
   }
   .main {
+    width: 80%;
+    height: calc(100% - 103px);
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    margin: 18px auto 0;
   }
   .info-text > .price {
     margin-top: 120px;
