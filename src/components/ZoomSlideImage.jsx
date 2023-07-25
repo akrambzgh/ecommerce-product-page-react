@@ -1,18 +1,21 @@
 /* eslint-disable react/prop-types */
-function ImageSlide(props) {
+function ZoomSlideImage(props) {
   let styles = {
     transform: `translateX(${props.length}%)`,
   };
   return (
-    <div className="prod-img">
-      <div className="main-img">
+    <div className={props.isShown ? "big-img show" : "big-img"}>
+      <div className="close" onClick={props.closeZoom}>
+        <img src="/images/icon-close.svg" alt="" />
+      </div>
+      <div className="main-img zoom">
         <div className="left-arrow" onClick={props.toLeft}>
           <img src="/images/icon-previous.svg" alt="" />
         </div>
         <div className="right-arrow" onClick={props.toRight}>
           <img src="/images/icon-next.svg" alt="" />
         </div>
-        <div className="product-imgs" style={styles} onClick={props.zoomImg}>
+        <div className="product-imgs" style={styles}>
           <img
             className="product-img"
             src="/images/image-product-1.jpg"
@@ -38,4 +41,4 @@ function ImageSlide(props) {
     </div>
   );
 }
-export default ImageSlide;
+export default ZoomSlideImage;

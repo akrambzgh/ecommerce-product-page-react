@@ -4,11 +4,11 @@ function Buy(props) {
     <div className="buy">
       <div className="count">
         <span onClick={props.decrement}>
-          <img src="/../public/images/icon-minus.svg" alt="" />
+          <img src="/images/icon-minus.svg" alt="" />
         </span>
         <span>{props.countNum}</span>
         <span onClick={props.increment}>
-          <img src="/../public/images/icon-plus.svg" alt="" />
+          <img src="/images/icon-plus.svg" alt="" />
         </span>
       </div>
       <div className="buy-button">

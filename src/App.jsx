@@ -3,8 +3,10 @@ import "./App.css";
 import Header from "./components/Header";
 import ImageSlide from "./components/ImageSlide";
 import InfoText from "./components/InfoText";
+import ZoomSlideImage from "./components/ZoomSlideImage";
 
 function App() {
+  // States
   const [count, setCount] = useState(JSON.parse(localStorage.getItem("count")));
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")));
   const [isOpen, setIsOpen] = useState(false);
@@ -12,13 +14,18 @@ function App() {
     JSON.parse(sessionStorage.getItem("length"))
   );
   const [isShown, setIsShown] = useState(false);
+  const [overlayer, setOverlayer] = useState(false);
+  const [overlayerZoom, setoverlayerZoom] = useState(false);
+  const [zoom, setZoom] = useState(false);
 
+  // Saving To Local Storage
   useEffect(() => {
     localStorage.setItem("count", JSON.stringify(count));
     localStorage.setItem("cart", JSON.stringify(cart));
     sessionStorage.setItem("length", JSON.stringify(length));
   }, [count, cart, length]);
 
+  // All States Functions
   function handleToglle() {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   }
@@ -40,7 +47,7 @@ function App() {
     }
   }
   function handleDelete() {
-    setIsOpen(false);
+    // setIsOpen(false);
     setCart(false);
     setCount(0);
   }
@@ -57,9 +64,19 @@ function App() {
   }
   function showList() {
     setIsShown(true);
+    setOverlayer(true);
   }
   function hideList() {
     setIsShown(false);
+    setOverlayer(false);
+  }
+  function zoomImg() {
+    setZoom(true);
+    setoverlayerZoom(true);
+  }
+  function closeZoom() {
+    setZoom(false);
+    setoverlayerZoom(false);
   }
   return (
     <div className="App">
@@ -76,7 +93,12 @@ function App() {
       />
       <main className="main">
         <div className="left">
-          <ImageSlide length={length} toLeft={toLeft} toRight={toRight} />
+          <ImageSlide
+            length={length}
+            toLeft={toLeft}
+            toRight={toRight}
+            zoomImg={zoomImg}
+          />
         </div>
         <div className="right">
           <InfoText
@@ -87,7 +109,19 @@ function App() {
           />
         </div>
       </main>
-      <div className={isShown ? "overlayer show" : "overlayer"}></div>
+      <div className={overlayer ? "overlayer show" : "overlayer"}></div>
+      <div
+        className={
+          overlayerZoom ? "overlayer-for-zoom show" : "overlayer-for-zoom"
+        }
+      ></div>
+      <ZoomSlideImage
+        length={length}
+        isShown={zoom}
+        closeZoom={closeZoom}
+        toLeft={toLeft}
+        toRight={toRight}
+      />
     </div>
   );
 }

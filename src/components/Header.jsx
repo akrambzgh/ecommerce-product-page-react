@@ -7,15 +7,11 @@ function Header(props) {
       <div className="container">
         <nav>
           <div className="humburgur" onClick={props.showList}>
-            <img src="../../public/images/icon-menu.svg" alt="" />
+            <img src="/images/icon-menu.svg" alt="" />
           </div>
-          <img src="../../public/images/logo.svg" alt="" />
+          <img src="/images/logo.svg" alt="" />
           <ul className={props.isShown ? "show" : ""}>
-            <img
-              src="../../public/images/icon-close.svg"
-              onClick={props.hideList}
-              alt=""
-            />
+            <img src="/images/icon-close.svg" onClick={props.hideList} alt="" />
             <li>Collections</li>
             <li>Men</li>
             <li>Women</li>
@@ -26,7 +22,7 @@ function Header(props) {
         <div className="serviece">
           <div className="cart-ico">
             <img
-              src="../../public/images/icon-cart.svg"
+              src="/images/icon-cart.svg"
               alt=""
               onClick={props.handleToglle}
             />
@@ -39,7 +35,7 @@ function Header(props) {
             />
           </div>
           <div className="user">
-            <img src="../../public/images/image-avatar.png" alt="" />
+            <img src="/images/image-avatar.png" alt="" />
           </div>
         </div>
       </div>

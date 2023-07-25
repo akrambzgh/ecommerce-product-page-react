@@ -11,10 +11,7 @@ function Cart(props) {
           </div>
           <div className="item">
             <div className="info">
-              <img
-                src="../../public/images/image-product-1-thumbnail.jpg"
-                alt=""
-              />
+              <img src="/images/image-product-1-thumbnail.jpg" alt="" />
               <div className="info-text">
                 <span>Fall Limited Edition Sneakers</span>
                 <span className="price-calc">
@@ -23,7 +20,7 @@ function Cart(props) {
                 </span>
               </div>
               <div className="delete" onClick={props.handleDelete}>
-                <img src="../../public/images/icon-delete.svg" alt="" />
+                <img src="/images/icon-delete.svg" alt="" />
               </div>
             </div>
             <button className="checkout">Checkout</button>

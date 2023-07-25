@@ -21,7 +21,8 @@
   margin-right: auto;
 }
 
-.overlayer {
+.overlayer,
+.overlayer-for-zoom {
   position: absolute;
   left: 0;
   top: 0;
@@ -33,7 +34,13 @@
   visibility: hidden;
   transition: var(--trnsition);
 }
-.overlayer.show {
+
+.overlayer-for-zoom {
+  display: none;
+}
+
+.overlayer.show,
+.overlayer-for-zoom.show {
   opacity: 1;
   visibility: visible;
 }
@@ -60,6 +67,10 @@
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
+}
+
+.header nav > img {
+  cursor: pointer;
 }
 
 .header nav ul {
@@ -181,12 +192,16 @@ header nav ul.show {
 }
 
 /* Image Slide */
-.prod-img .main-img {
+.main-img {
   position: relative;
   overflow: hidden;
 }
 
-.prod-img .left-arrow,
+.big-img {
+  display: none;
+}
+
+.left-arrow,
 .right-arrow {
   position: absolute;
   top: 50%;
@@ -206,15 +221,15 @@ header nav ul.show {
   user-select: none;
 }
 
-.prod-img .left-arrow {
+.left-arrow {
   left: 5%;
 }
 
-.prod-img .right-arrow {
+.right-arrow {
   right: 5%;
 }
 
-.prod-img .product-imgs {
+.product-imgs {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -349,18 +364,55 @@ button.buy-btn {
   .right {
     flex: 1;
   }
-  .prod-img .main-img {
+  .main-img {
     width: 450px;
     border-radius: 10px;
   }
-  .prod-img .main-img img {
+  .main-img img {
     border-radius: 10px;
   }
-  .prod-img .product-imgs {
+  .product-imgs {
     width: 450px;
     height: 450px;
+    cursor: pointer;
   }
-  .prod-img .thumbnails .thumbnail img {
+  .big-img {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 16;
+    transition: var(--trnsition);
+  }
+  .big-img.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .main-img.zoom {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 700px;
+    width: 700px;
+  }
+  .zoom .product-imgs {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+  }
+  .big-img .close img {
+    width: 40px;
+  }
+  .big-img .close {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    cursor: pointer;
   }
   .main {
     width: 80%;
@@ -389,5 +441,12 @@ button.buy-btn {
   }
   .info-text > .price {
     width: 40%;
+  }
+  .overlayer-for-zoom,
+  .overlayer {
+    z-index: 15;
+  }
+  .overlayer-for-zoom {
+    display: block;
   }
 }
